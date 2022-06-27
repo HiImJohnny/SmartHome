@@ -25,21 +25,9 @@ namespace UniversalServer.Model
         ///Diese Methode für den Datensatz in die Datenbank ein. Siehe Info-Pool      
         public void InsertData(TempValue t, HumidValue h, PressureValue p, DateTime dt, string ipa)
         {
-            MySqlCommand cmd = new MySqlCommand();
-            int sensId = 0;
-            string dtInSql = "";
-            dtInSql = $"{dt.Year}-{dt.Month}-{dt.Day} {dt.Hour}:{dt.Minute}:{dt.Second}";
-            if(ipa == "192.168.1.1")
-            {
-                sensId = 1;
-            }
+            MySqlCommand cmd = new MySqlCommand(); 
 
-            if(ipa == "192.168.1.2")
-            {
-                sensId = 2;
-            }
-            //DB "2022-05-12 11:17:00"
-            string insert = $"INSERT INTO klimawerte (temperature,humidity,pressure,datetime,ipa,sensId) VALUES('{t.Value}', '{h.Value}', '{p.Value}', '{dtInSql}', '{ipa}', '{sensId}')";
+            string insert = "INSERT INTO person (id,name) VALUES('1','Patrick')";
 
             cmd.CommandText = insert;
             cmd.Connection = _con;

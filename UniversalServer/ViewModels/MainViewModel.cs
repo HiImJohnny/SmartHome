@@ -175,6 +175,8 @@ namespace UniversalServer.ViewModels
             //Protokoll-Format: Temperatur;Luftfeuchte;Luftdruck;
             try
             {
+                //Console.WriteLine(msg);
+                //Console.ReadKey();
                 string temp = msg.Split(';')[0].Replace('.', ',');
 
                 double t = Convert.ToDouble(temp);
@@ -188,6 +190,8 @@ namespace UniversalServer.ViewModels
                 double druck = Convert.ToDouble(d);
 
                 PressCurrentVal = new PressureValue() { DateAndTime = DateTime.Now, Value = druck };
+
+                string ipAdr = msg.Split(';')[3];
 
                 //Daten in die Datenbank schreiben.
                 try
